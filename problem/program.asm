@@ -4,146 +4,117 @@
 
 
 (INICIO)
-		@KBD
-		D=M
-		@84
-		D=D-A
-		@VERTICAL
-		D;JEQ
+@KBD
+D=M
+@84
+D=D-A
+@VERTICAL
+D;JEQ
 
-		@KBD
-		D=M
-		@67
-		D=D-A
-		@VACIAR
-		D;JEQ
+@KBD
+D=M
+@67
+D=D-A
+@VACIAR
+D;JEQ
 
-		@INICIO
-		0;JMP
-
+@INICIO
+0;JMP
 
 
 (VERTICAL)
-		@16400 
-		D=A 
-		@coord
-		M=D
-		@256 
-		D=A
-		@cont
-		M=D
-		@32
-		D=A
-		@salto
-		M=D
-		@256
-		D=A
-		@color
-		M=D         
-
-		@coord
-		D=M
-		@pscreen
-		M=D
-		@PINTAR
-		0;JMP
-
-(HORIZONTAL)
-
-		@20480
-		D=A
-		@coord       
-		M=D
-		@32
-		D=A
-		@cont2
-		M=D
-		@1
-		D=A
-		@salto2
-		M=D
-		@color2
-		M=-1
+@16400 
+D=A 
+@coord
+M=D
+@256 
+D=A
+@cont
+M=D
+@32
+D=A
+@salto
+M=D
+@256
+D=A
+@color
+M=D         
+@coord
+D=M
+@pscreenprogram.asm
+M=D
+@color2
+M=-1
 		
-		@coord         
-		D=M
-		@pscreen
-		M=D
-		@LIMPIAR
-		0;JMP
+@coord         
+D=M
+@pscreen
+M=D
+@LIMPIAR
+0;JMP
 
 (PINTAR)
-		@cont
-		D=M
-		@HORIZONTAL
-		D;JEQ
+@cont
+D=M
+@HORIZONTAL
+D;JEQ
 
-		@color
-		D=M
-		@pscreen
-		A=M
-		M=D
-
-		@cont
-		M=M-1
-
-		@salto
-		D=M
-
-		@pscreen
-		M=M+D
-
-		@PINTAR
-		0;JMP
+@color
+D=M
+@pscreen
+A=M
+M=D
+@cont
+M=M-1
+@salto
+D=M
+@pscreen
+MM=+D
+@PINTAR
+0;JMP
 
 (VACIAR)
-		@16384
-		D=A
-		@coord        
-		M=D
-		@8192
-		D=A
-		@cont2
-		M=D
-		@1
-		D=A
-		@salto2
-		M=D
-		@color2
-		M=0
-		@coord         
-		D=M
-		@pscreen
-		M=D
-		@LIMPIAR
-		0;JMP
+@16384
+D=A
+@coord        
+M=D
+@8192
+D=A
+@cont2
+M=D
+@1
+D=A
+@salto2
+M=D
+@color2
+M=0
+@coord         
+D=M
+@pscreen
+M=D
+@LIMPIAR
+0;JMP
 
 (LIMPIAR)
-		@cont2
-		D=M
-		@END
-		D;JEQ
+@cont2problem
+D=M
+@pscreen
+A=M
+M=D
 
-		@color2
-		D=M
-		@pscreen
-		A=M
-		M=D
+@cont2
+M=M-1
 
-		@cont2
-		M=M-1
+@salto2
+D=M
 
-		@salto2
-		D=M
+@pscreen
+M=M+D
 
-		@pscreen
-		M=M+D
+@LIMPIAR
+0;JMP
 
-		@LIMPIAR
-		0;JMP
+ (END)
+@INICIO
+0;JMP
 
-
-
-(END)
-		@INICIO
-		0;JMP
