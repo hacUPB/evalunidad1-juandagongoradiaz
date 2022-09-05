@@ -10,7 +10,6 @@ D=M
 D=D-A
 @VERTICAL
 D;JEQ
-
 @KBD
 D=M
 @67
