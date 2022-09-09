@@ -1,119 +1,140 @@
-// NOMBRE: Juan David Góngora Díaz
-// ID: 000243384
-// CORREO: juan.gongorad@upb.edu.co
-
-
 (INICIO)
-@KBD
-D=M
-@84
-D=D-A
-@VERTICAL
-D;JEQ
-@KBD
-D=M
-@67
-D=D-A
-@VACIAR
-D;JEQ
+		@KBD
+		D=M
+		@84
+		D=D-A
+		@VERTICAL
+		D;JEQ
 
-@INICIO
-0;JMP
+		@KBD
+		D=M
+		@67
+		D=D-A
+		@VACIO
+		D;JEQ
 
+		@INICIO
+		0;JMP
+
+(VACIO)
+		@16384
+		D=A
+		@COORD1
+		M=D
+		@8192
+		D=A
+		@CONT1
+		M=D
+		@1
+		D=A
+		@SALTO1
+		M=D
+		@COLOR1
+		M=0
+		@COORD1
+		D=M
+		@PSCREEN
+		M=D
+		@BORRAR
+		0;JMP
 
 (VERTICAL)
-@16400 
-D=A 
-@coord
-M=D
-@256 
-D=A
-@cont
-M=D
-@32
-D=A
-@salto
-M=D
-@256
-D=A
-@color
-M=D         
-@coord
-D=M
-@pscreenprogram.asm
-M=D
-@color2
-M=-1
+		@16400 
+		D=A 
+		@COORD
+		M=D
+		@256 
+		D=A
+		@CONT
+		M=D
+		@32
+		D=A
+		@SALTO
+		M=D
+		@256
+		D=A
+		@COLOR
+		M=D
+
+		@COORD
+		D=M
+		@PSCREEN
+		M=D
+		@PINTAR
+		0;JMP
+
+(HORIZONTAL)
+
+		@20480
+		D=A
+		@COORD1
+		M=D
+		@32
+		D=A
+		@CONT1
+		M=D
+		@1
+		D=A
+		@SALTO1
+		M=D
+		@COLOR1
+		M=-1
 		
-@coord         
-D=M
-@pscreen
-M=D
-@LIMPIAR
-0;JMP
+		@COORD1
+		D=M
+		@PSCREEN
+		M=D
+		@BORRAR
+		0;JMP
 
 (PINTAR)
-@cont
-D=M
-@HORIZONTAL
-D;JEQ
+		@CONT
+		D=M
+		@HORIZONTAL
+		D;JEQ
 
-@color
-D=M
-@pscreen
-A=M
-M=D
-@cont
-M=M-1
-@salto
-D=M
-@pscreen
-MM=+D
-@PINTAR
-0;JMP
+		@COLOR
+		D=M
+		@PSCREEN
+		A=M
+		M=D
 
-(VACIAR)
-@16384
-D=A
-@coord        
-M=D
-@8192
-D=A
-@cont2
-M=D
-@1
-D=A
-@salto2
-M=D
-@color2
-M=0
-@coord         
-D=M
-@pscreen
-M=D
-@LIMPIAR
-0;JMP
+		@CONT
+		M=M-1
 
-(LIMPIAR)
-@cont2problem
-D=M
-@pscreen
-A=M
-M=D
+		@SALTO
+		D=M
 
-@cont2
-M=M-1
+		@PSCREEN
+		M=M+D
 
-@salto2
-D=M
+		@PINTAR
+		0;JMP
 
-@pscreen
-M=M+D
+(BORRAR)
+		@CONT1
+		D=M
+		@FINAL
+		D;JEQ
 
-@LIMPIAR
-0;JMP
+		@COLOR1
+		D=M
+		@PSCREEN
+		A=M
+		M=D
 
- (END)
-@INICIO
-0;JMP
+		@CONT1
+		M=M-1
 
+		@SALTO1
+		D=M
+
+		@PSCREEN
+		M=M+D
+
+		@BORRAR
+		0;JMP
+
+(FINAL)
+		@INICIO
+		0;JMP
