@@ -140,5 +140,10 @@
 		0;JMP
 
 (FINAL)
+        @bool
+        D=M
+        @HORIZONTAL
+        D;JEQ
+        
 		@INICIO
 		0;JMP
