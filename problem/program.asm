@@ -3,162 +3,140 @@
 // Correo: juand.gongorad@upb.edu.co
 
 (INICIO)
-		@KBD
-		D=M
-		@84
-		D=D-A
-		@VERTICAL
-		D;JEQ
+@KBD
+D=M
+@84
+D=D-A
+@VERTICAL
+D;JEQ
 
-		@KBD
-		D=M
-		@67
-		D=D-A
-		@VACIO
-		D;JEQ
+@KBD
+D=M
+@67
+D=D-A
+@EMPTY
+D;JEQ
 
-		@INICIO
-		0;JMP
-
-(VACIO)
-		@16384
-		D=A
-		@COORD1
-		M=D
-		@8192
-		D=A
-		@CONT1
-		M=D
-		@1
-		D=A
-		@SALTO1
-		M=D
-		@COLOR1
-		M=0
-		@COORD1
-		D=M
-		@PSCREEN
-		M=D
-
-         @RECT
-		@BORRAR
-		0;JMP
+@INICIO
+0;JMP
 
 
 (VERTICAL)
-		@16400 
-		D=A 
-		@COORD
-		M=D
-		@256 
-		D=A
-		@CONT
-		M=D
-		@32
-		D=A
-		@SALTO
-		M=D
-		@256
-		D=A
-		@COLOR
-		M=D
-        @bool
-        M=0
+@16400 
+D=A 
 
-		@COORD
-		D=M
-		@PSCREEN
-		M=D
-		@PINTAR
-		0;JMP
+@coord
+M=D
+@256 
+D=A
+
+@cont
+M=D
+@32
+D=A
+
+@salto
+M=D
+@256
+D=A
+
+@color  
+M=D
+@bool
+M=0
+
+@RECT
+0;JMP
 
 (HORIZONTAL)
+@20480
+D=A
 
-		@20480
-		D=A
-		@COORD1
-		M=D
-		@32
-		D=A
-		@CONT1
-		M=D
-		@1
-		D=A
-		@SALTO1
-		M=D
-		@COLOR1
-		M=-1
-        @bool
-        M=1
-		
-		@COORD1
-		D=M
-		@PSCREEN
-		M=D
-		@BORRAR
-		0;JMP
+@coord
+M=D
+
+@32
+D=A
+
+@cont
+M=D
+@1
+D=A
+
+@salto
+M=D
+
+@color  
+M=-1
+@bool
+M=1
+
+@RECT
+0;JMP
 
 (RECT)
-        @COORD
-        D=M
-        @PANTALLA
-        M=D
+@coord
+D=M
 
+@coord2
+M=D
 
+(PAINT)
+@cont
+D=M 
 
-(PINTAR)
-		@CONT
-		D=M
-		@HORIZONTAL
-		D;JEQ
+@END
+D;JEQ
 
-		@COLOR
-		D=M
-		@PSCREEN
-		A=M
-		M=D
+@color  
+D=M
 
-		@CONT
-		M=M-1
+@coord2
+A=M 
+M=D
 
-		@SALTO
-		D=M
+@cont
+M=M-1
 
-		@PSCREEN
-		M=M+D
+@salto
+D=M
 
-		@PINTAR
-		0;JMP
+@coord2
+M=M+D
 
-(BORRAR)
-		@CONT1
-		D=M
-		@FINAL
-		D;JEQ
+@PAINT
+0;JMP
 
-		@COLOR1
-		D=M
-		@PSCREEN
-		A=M
-		M=D
+(EMPTY)
+@16384
+D=A
 
-		@CONT1
-		M=M-1
+@coord
+M=D
 
-		@SALTO1
-		D=M
+@8192
+D=A
 
-		@PSCREEN
-		M=M+D
+@cont 
+M=D
+@1
+D=A
 
-		@BORRAR
-		0;JMP
+@salto
+M=D
 
-(FINAL)
-        @bool
-        D=M
-        @HORIZONTAL
-        D;JEQ
+@color  
+M=0
 
-		@INICIO
-		0;JMP
+@RECT
+0;JMP
+
+(END)
+@bool
+D=M 
+
+@HORIZONTAL
+D;JEQ 
+   
+@INICIO
+0;JMP
