@@ -55,6 +55,8 @@
 		D=A
 		@COLOR
 		M=D
+        @bool
+        M=0
 
 		@COORD
 		D=M
@@ -79,6 +81,8 @@
 		M=D
 		@COLOR1
 		M=-1
+        @bool
+        M=1
 		
 		@COORD1
 		D=M
