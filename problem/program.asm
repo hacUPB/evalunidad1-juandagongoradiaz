@@ -1,3 +1,7 @@
+// NOMBRE: Juan David Góngora Díaz
+// ID: 000243384
+// Correo: juand.gongorad@upb.edu.co
+
 (INICIO)
 		@KBD
 		D=M
@@ -35,8 +39,11 @@
 		D=M
 		@PSCREEN
 		M=D
+
+         @RECT
 		@BORRAR
 		0;JMP
+
 
 (VERTICAL)
 		@16400 
@@ -91,6 +98,14 @@
 		@BORRAR
 		0;JMP
 
+(RECT)
+        @COORD
+        D=M
+        @PANTALLA
+        M=D
+
+
+
 (PINTAR)
 		@CONT
 		D=M
@@ -144,6 +159,6 @@
         D=M
         @HORIZONTAL
         D;JEQ
-        
+
 		@INICIO
 		0;JMP
